@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find thousands of remote jobs and freelance opportunities. Apply easily with our professional job board.">
+    <meta name="keywords" content="remote jobs, freelance, online work, job search, professional careers">
+    <title>Online Work Hub - Professional Remote Job Board</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header .container {
+            max-width: 1200px;
+        }
+        .search-bar {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+        }
+        .search-bar .form-row {
+            align-items: center;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+        }
+        .job-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        .job-card .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+        .job-requirements {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+        .job-requirements h6 {
+            color: #007bff;
+            margin-bottom: 0.5rem;
+        }
+        .job-requirements ul {
+            list-style: none;
+            padding: 0;
+        }
+        .job-requirements li {
+            margin-bottom: 0.25rem;
+        }
+        .job-requirements li i {
+            color: #28a745;
+            margin-right: 0.5rem;
+        }
+        .beginner-note {
+            background: #d4edda;
+            color: #155724;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .filters {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stats {
+            text-align: center;
+            padding: 2rem 0;
+            background: white;
+            margin-bottom: 2rem;
+        }
+        .stats .stat {
+            display: inline-block;
+            margin: 0 2rem;
+        }
+        .testimonials {
+            background: #007bff;
+            color: white;
+            padding: 2rem 0;
+        }
+        .testimonial {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        footer {
+            background: #343a40;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .search-bar .form-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="mb-0"><i class="fas fa-briefcase"></i> Online Work Hub</h1>
+            <p class="mb-3">Your gateway to professional remote careers</p>
+            <div class="search-bar">
+                <form class="form-row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Job title, keywords" id="jobSearch">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Location" id="locationSearch">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="typeFilter">
+                            <option>All Types</option>
+                            <option>Full-time</option>
+                            <option>Freelance</option>
+                            <option>Part-time</option>
+                            <option>Beginner-Friendly</option>  <!-- Added for clarity -->
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="container my-4">
+        <div class="stats">
+            <div class="stat">
+                <h2>15,000+</h2>
+                <p>Jobs Posted</p>
+            </div>
+            <div class="stat">
+                <h2>500+</h2>
+                <p>Companies</p>
+            </div>
+            <div class="stat">
+                <h2>98%</h2>
+                <p>User Satisfaction</p>
+            </div>
+        </div>
+
+        <div class="filters">
+            <h5>Filter Results</h5>
+            <div class="form-row">
+                <div class="col-md-3">
+                    <select class="form-control" id="salaryFilter">
+                        <option>Salary Range</option>
+                        <option>$15k - $30k</option>  <!-- Added lower range for beginners -->
+                        <option>$30k - $50k</option>
+                        <option>$50k - $80k</option>
+                        <option>$80k+</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="experienceFilter">
+                        <option>Experience Level</option>
+                        <option>Beginner (No Experience Needed)</option>  <!-- Added explicitly -->
+                        <option>Entry</option>
+                        <option>Mid</option>
+                        <option>Senior</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="jobsContainer">
+            <!-- Existing Jobs -->
+            <div class="job-card">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="company-logo mr-3"><i class="fas fa-building"></i></div>
+                    <div>
+                        <h5>Senior Software Engineer</h5>
+                        <p class="mb-0">TechCorp - Remote</p>
+                    </div>
+                </div>
+                <p>Lead development of scalable web apps. Salary: $100k - $150k. Posted 2 days ago.</p>
+                <div class="job-requirements">
+                    <h6><i class="fas fa-check-circle"></i> Job Requirements</h6>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 5+ years of experience in software development</li>
+                        <li><i class="fas fa-check"></i> Proficiency in React, Node.js, and cloud platforms</li>
+                        <li><i class="fas fa-check"></i> Bachelor's degree in Computer Science or equivalent</li>
+                        <li><i class="fas fa-check"></i> Strong problem-solving and teamwork skills</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary">Easy Apply</button>
+            </div>
+
+            <!-- New Beginner-Friendly Jobs -->
+            <div class="job-card">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="company-logo mr-3"><i class="fas fa-keyboard"></i></div>
+                    <div>
+                        <h5>Data Entry Clerk</h5>
+                        <p class="mb-0">Admin Solutions - Remote</p>
+                    </div>
+                </div>
+                <div class="beginner-note">
+                    <i class="fas fa-star"></i> Beginners Welcome! No experience required. Perfect for anyone with basic computer skills.
+                </div>
+                <p>Enter data into spreadsheets and databases. Easy tasks anyone can learn quickly. Salary: $20k - $30k. Posted 3 days ago.</p>
+                <div class="job-requirements">
+                    <h6><i class="fas fa-check-circle"></i> Job Requirements</h6>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Basic computer skills (typing, using Excel)</li>
+                        <li><i class="fas fa-check"></i> No prior experience needed – training provided</li>
+                        <li><i class="fas fa-check"></i> Reliable internet and attention to detail</li>
+                        <li><i class="fas fa-check"></i> High school diploma or equivalent</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary">Easy Apply</button>
+            </div>
+
+            <div class="job-card">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="company-logo mr-3"><i class="fas fa-share-alt"></i></div>
+                    <div>
+                        <h5>Social Media Helper</h5>
+                        <p class="mb-0">Creative Hub - Remote</p>
+                    </div>
+                </div>
+                <div class="beginner-note">
+                    <i class="fas fa-star"></i> Beginners Welcome! Simple tasks like posting and liking – everyone can do this!
+                </div>
+                <p>Help manage social media accounts by posting updates and engaging with followers. Fun and easy for beginners. Rate: $15/hour. Posted 1 week ago.</p>
+                <div class="job-requirements">
+                    <h6><i class="fas fa-check-circle"></i> Job Requirements</h6>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Basic knowledge of social media (Facebook, Instagram)</li>
+                        <li><i class="fas fa-check"></i> No experience required – quick to learn</li>
+                        <li><i class="fas fa-check"></i> Good communication skills</li>
+                        <li><i class="fas fa-check"></i> Enthusiasm for online work</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary">Easy Apply</button>
+            </div>
+
+            <div class="job-card">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="company-logo mr-3"><i class="fas fa-headset"></i></div>
+                    <div>
+                        <h5>Entry-Level Virtual Assistant</h5>
+                        <p class="mb-0">Biz Support Co. - Remote</p>
+                    </div>
+                </div>
+                <div class="beginner-note">
+                    <i class="fas fa-star"></i> Beginners Welcome! Handle simple admin tasks – ideal for anyone starting out.
+                </div>
+                <p>Assist with emails, scheduling, and basic tasks. No complex skills needed. Salary: $25k - $35k. Posted 5 days ago.</p>
+                <div class="job-requirements">
+                    <h6><i class="fas fa-check-circle"></i> Job Requirements</h6>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Basic email and calendar management</li>
+                        <li><i class="fas fa-check"></i> No experience required – full training included</li>
+                        <li><i class="fas fa-check"></i> Reliable and organized</li>
+                        <li><i class="fas fa-check"></i> High school education</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary">Easy Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonial">
+                <h3>What Professionals Say</h3>
+                <p>"This platform transformed my career with top remote opportunities."</p>
+                <cite>- Sarah Lee, UX Designer</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Online Work Hub. All rights reserved. | <a href="#" style="color: white;">Privacy Policy</a> | <a href="#" style="color: white;">Terms</a></p>
+            <div>
+                <a href="#" class="mr-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="mr-3"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Basic filter functionality (expand as needed)
+        $('#jobSearch, #locationSearch, #typeFilter, #salaryFilter, #experienceFilter').on('change input', function() {
+            // Implement filtering logic here (e.g., hide/show cards based on criteria)
+            console.log('Filtering jobs...');
+        });
+    </script>
+</body>
+</html>
